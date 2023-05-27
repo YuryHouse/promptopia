@@ -11,12 +11,11 @@ const Nav = () => {
     const [toggleDropdown, setToggleDropdown] = useState(false);
 
     useEffect(() => {
-        const setProviders = async () => {
+        (async () => {
             const response = await getProviders();
             setProviders(response);
-        }
-        setProviders();
-    }, [])
+        })();
+    }, []);
 
     return (
         <nav className={'flex-between w-full mb-16 pt-3'}>
@@ -54,7 +53,7 @@ const Nav = () => {
                             />
                         </Link>
                     </div>
-                ): (
+                ) : (
                     <>
                         {providers &&
                             Object.values(providers).map((provider) => (
